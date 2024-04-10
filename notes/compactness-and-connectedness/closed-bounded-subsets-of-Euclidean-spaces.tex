@@ -1,0 +1,119 @@
+\documentclass[onecolumn]{ctexart}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{indentfirst}
+\usepackage{bm}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows}
+\geometry{a4paper,scale=0.8}
+
+\newcommand*\textinmath[1]{\thickspace\textnormal{#1}\thickspace}
+\newcommand*\closure[1]{\overline{#1}}
+\newcommand*\interior[1]{\mathring{#1}}
+
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newtheorem{remark}{Remark}
+\newtheorem{example}{Example}
+
+\title{Notes of "Closed Bounded Subsets of $\mathbb{E}^n$"}
+\author{Jinxin Wang}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Overview}
+\begin{itemize}
+  \item Def: Bounded subset of a Euclidean space
+  \item Rmk: The closed and bounded subsets in $\mathbb{E}^n$ are of special interest to us because of their presence
+  \item Def: Open cover and subcover of a topological space
+  \item Examples of open covers and subcovers of topological spaces
+  \begin{itemize}
+    \item Eg: An open cover of $\mathbb{E}^1$: $\left\{ (k - 1, k + 1) \mid k \in \mathbb{Z} \right\}$ and its subcovers
+    \item Eg: An open cover of $\mathbb{E}^2$: $\left\{ \interior{B}((x, 1)) \mid x = (a, b) \textinmath{in which} a, b \in \mathbb{Z} \right\}$ and its subcovers
+    \item Eg: An open cover of $\lbrack 0, 1 \rbrack$: $\lbrack 0, \frac{1}{5} \rparen$, $\lparen \frac{4}{5}, 1 \rbrack$, $\left\{ (\frac{1}{n}, 1 - \frac{1}{n}) \mid n \in \mathbb{N} \wedge n > 2 \right\}$ and its subcovers
+    \item Eg: An open cover of $\lparen 0, 1 \rbrack$: $\left\{ \lparen \frac{1}{n}, 1 \rbrack \mid n \in \mathbb{N} \wedge n > 1 \right\}$ and its subcovers
+  \end{itemize}
+  \item Thm: A necessary and sufficient condition for a subset of $\mathbb{E}^n$ is closed and bounded in terms of open covers
+  \item Def: Compact topological space
+  \item Rmk: Compactness is a topological property of a space
+\end{itemize}
+
+\section{Content}
+\begin{definition}[Bounded subset of a Euclidean space]
+  A subset $X$ of $\mathbb{E}^n$ is bounded if there exists a ball $B(O, r)$ in 
+  which $O$ is the origin and $r > 0$ such that $X \subset B(O, r)$.
+\end{definition}
+
+\begin{definition}[Open cover and subcover of a topological space]
+  Let $X$ be a topological space. A family $\mathfrak{F}$ of open subsets of $X$ 
+  is called an open cover of $X$ if the union of the family is $X$. If 
+  $\mathfrak{F}'$ is a subfamily of $\mathfrak{F}$ and $\bigcup \mathfrak{F}' = 
+  X$, then $\mathfrak{F}'$ is called a subcover of $\mathfrak{F}$.
+\end{definition}
+
+\begin{example}[An open cover of $\mathbb{E}^1$: $\left\{ (k - 1, k + 1) \mid k \in \mathbb{Z} \right\}$ and its subcovers]
+  The family of open subsets of $\mathbb{E}^1$ $\mathfrak{F} = \left\{ (k - 1, 
+  k + 1) \mid k \in \mathbb{Z} \right\}$ is clearly an open cover of $\mathbb{E}^1$.
+
+  Notice that $\mathbb{E}^1$ is unbounded, and $\mathfrak{F}$ does not have any 
+  subcover. Suppose we remove the open interval centred at $k (k \in \mathbb{Z})$ 
+  in $\mathfrak{F}$, then the point $x = k$ is not covered by any other open 
+  intervals in $\mathfrak{F}$ since the distance between it and other integer 
+  point in $\mathbb{E}^1$ is greater than or equal to $1$.
+\end{example}
+
+\begin{example}[An open cover of $\mathbb{E}^2$: $\left\{ \interior{B}((x, 1)) \mid x = (a, b) \textinmath{in which} a, b \in \mathbb{Z} \right\}$ and its subcovers]
+  Analogous to the previous example, the family of open subsets of $\mathbb{E}^2$ 
+  $\mathfrak{F} = \left\{ \interior{B}((x, 1)) \mid x = (a, b) \textinmath{in which} 
+  \right. \\ \left. a, b \in \mathbb{Z} \right\}$ is an open cover of $\mathbb{E}^2$, but it does 
+  not have any subcover since removing any open subset in $\mathfrak{F}$ will 
+  cause the centre of the removed open subset to be uncovered.
+\end{example}
+
+\begin{example}[An open cover of $\lbrack 0, 1 \rbrack$: $\lbrack 0, \frac{1}{5} \rparen$, $\lparen \frac{4}{5}, 1 \rbrack$, $\left\{ (\frac{1}{n}, 1 - \frac{1}{n}) \mid n \in \mathbb{N} \wedge n > 2 \right\}$ and its subcovers]
+  Let $\lbrack 0, 1 \rbrack$ have the subspace topology of $\mathbb{E}^1$. The 
+  family of open sets $\mathfrak{F} = \left\{ \lbrack 0, \frac{1}{5} \rparen, 
+  \lparen \frac{4}{5}, 1 \rbrack \right\} \cup \left\{ (\frac{1}{n}, 1 - \frac{1}{n}) 
+  \mid \right. \\ \left. n \in \mathbb{N} \wedge n > 2 \right\}$ is an open cover of $\left[ 0, 1 
+  \right]$.
+
+  Notice that $\lbrack 0, 1 \rbrack$ is a closed and bounded subset of $\mathbb{E}^1$, 
+  and $\mathfrak{F}$ has a finite subcover $\mathfrak{F}' = \lbrace \lbrack 0, 
+  \frac{1}{5} \rparen, \\ \lparen \frac{4}{5}, 1 \rbrack, (\frac{1}{3}, \frac{2}{3}), 
+  (\frac{1}{4}, \frac{3}{4}), (\frac{1}{5}, \frac{4}{5}), (\frac{1}{6}, \frac{5}{6}) 
+  \rbrace$.
+\end{example}
+
+\begin{example}[An open cover of $\lparen 0, 1 \rbrack$: $\left\{ \lparen \frac{1}{n}, 1 \rbrack \mid n \in \mathbb{N} \wedge n > 1 \right\}$ and its subcovers]
+  Let $\lparen 0, 1 \rbrack$ have the subspace topology of $\mathbb{E}^1$. The family of open sets $\mathfrak{F} = \left\{ \lparen \frac{1}{n}, 1 \rbrack \mid n \in \mathbb{N} \wedge n > 1 \right\}$ is an open cover of $\lparen 0, 1 \rbrack$.
+
+  Notice that $\lparen 0, 1 \rbrack$ is not a closed subset of $\mathbb{E}^1$, 
+  and $\mathfrak{F}$ does not have a finite subcover. Suppose that there is a 
+  finite subcover $\mathfrak{F}'$ of $\mathfrak{F}$, then $\mathfrak{F}'$ consists 
+  of finite open intervals with the form $\lparen \frac{1}{n}, 1 \rbrack$. Since 
+  they are finite we can pick the open interval with the largest $n$, denoted by 
+  $n_0$. Then $(0, \frac{1}{n_0})$ is not covered by $\mathfrak{F}'$, which 
+  contradicts that $\mathfrak{F}$ is a subcover. Hence $\mathfrak{F}$ does not 
+  have any finite subcover.
+\end{example}
+
+\begin{definition}[Compact topological space]
+  A topological space $X$ is compact if every open cover of $X$ has a finite 
+  subcover.
+\end{definition}
+
+\end{document}
